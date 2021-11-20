@@ -63,11 +63,24 @@ isLoading
 
 split
 {
-    if (current.levelID.ToLower() != old.levelID.ToLower() &&
-		old.levelID.ToLower() != "menu" && current.levelID.ToLower() != "menu" &
-		current.levelID.ToLower() != "raycap" &&
-		old.levelID.ToLower() != "mapmonde")
+
+	Func<string, bool> isIgnoredMap = delegate(string mapName) {
+		string n = mapName.ToLower();
+		return (n ==  "menu" || n == "bonux" || n == "bast_09" || n=="batam_10" || n=="batam_20" || n=="nego_10" || n=="poloc_10" || n=="poloc_20" || n=="poloc_30" || n=="poloc_40");
+	};
+	
+	string newLvl = current.levelID.ToLower();
+	string oldLvl = old.levelID.ToLower();
+
+    if (newLvl != oldLvl && // Changed map,
+		newLvl != "raycap" && // Didn't go to raycap
+		oldLvl != "mapmonde" && // Didn't come from the overworld,
+		oldLvl != "ball" && // Ball is the only cutscene in between regular maps
+		newLvl != "ly_10" && // Don't split when going into Walk of Life
+		newLvl != "ly_20" && // Don't split when going into Walk of Power
+	!isIgnoredMap(current.levelID) && !isIgnoredMap(old.levelID)) {
         return true; // level changed
+	}
 	
     if (vars.scanForBossHealth && current.levelID.ToLower() == "rhop_10" && current.finalBossHealth == 0)
     {
