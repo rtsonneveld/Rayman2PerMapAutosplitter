@@ -1,7 +1,7 @@
 # Rayman2PerMapAutosplitter
 Autosplitter for Rayman 2 that splits on every loading screen. Hall of doors and the menu aren't included for splitting.
 
-##How to Use
+## How to Use
 1. Download LiveSplit.Rayman2PerMap.asl from this repository
 2. Activate the default autosplitter in Livesplit if you want to use this one (Edit Splits -> Deactivate)
 3. Right click in Livesplit > Edit Layout
