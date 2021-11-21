@@ -66,7 +66,7 @@ split
 
 	Func<string, bool> isIgnoredMap = delegate(string mapName) {
 		string n = mapName.ToLower();
-		return (n ==  "menu" || n == "bonux" || n == "bast_09" || n=="batam_10" || n=="batam_20" || n=="nego_10" || n=="poloc_10" || n=="poloc_20" || n=="poloc_30" || n=="poloc_40");
+		return (n ==  "menu" || n == "bast_09" || n=="batam_10" || n=="batam_20" || n=="nego_10" || n=="poloc_10" || n=="poloc_20" || n=="poloc_30" || n=="poloc_40");
 	};
 	
 	string newLvl = current.levelID.ToLower();
@@ -74,6 +74,7 @@ split
 
     if (newLvl != oldLvl && // Changed map,
 		newLvl != "raycap" && // Didn't go to raycap
+		newLvl != "bonux" && // Didn't go to raycap
 		oldLvl != "mapmonde" && // Didn't come from the overworld,
 		oldLvl != "ball" && // Ball is the only cutscene in between regular maps
 		newLvl != "ly_10" && // Don't split when going into Walk of Life
